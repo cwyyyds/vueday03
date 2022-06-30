@@ -45,7 +45,7 @@
               type="text"
               class="form-control"
               placeholder="资产名称"
-              v-model="name1"
+              v-model.trim="name1"
             />
           </div>
         </div>
@@ -56,7 +56,7 @@
               type="text"
               class="form-control"
               placeholder="价格"
-              v-model="price1"
+              v-model.trim="price1"
             />
           </div>
         </div>
@@ -94,6 +94,10 @@ export default {
     },
 
     addFn() {
+      if (this.name1 == '' || this.price1 == 0) {
+        this.price1 = 0
+        return alert('Please entet')
+      }
       const id = this.list[this.list.length - 1]
         ? this.list[this.list.length - 1].id + 1
         : 100
